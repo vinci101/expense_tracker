@@ -1,12 +1,26 @@
+/* eslint-disable react/jsx-key */
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+import Transaction from "./Transaction";
+
 const TransactionList = () => {
+  const { transactions } = useContext(GlobalContext);
+  const sign = transactions.amount >= 0 ? "+" : "-";
+  // console.log(transactions);
   return (
     <>
       <h3>History</h3>
       <ul id="list" className="list">
-        <li className="minus">
-          Cash <span>-$400</span>
-          <button className="delete-btn">X</button>
-        </li>
+        {transactions.map((transaction) => (
+          // <li className={transaction.amount >= 0 ? "plus" : "minus"}>
+          //   {transaction.text}{" "}
+          //   <span>
+          //     {sign}${transaction.amount}
+          //   </span>
+          //   <button className="delete-btn">X</button>
+          // </li>
+          <Transaction key={transaction.id} transaction={transaction} />
+        ))}
       </ul>
     </>
   );
