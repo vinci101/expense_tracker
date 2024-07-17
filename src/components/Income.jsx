@@ -27,7 +27,7 @@ const Income = () => {
       <div>
         <h4>Expense</h4>
         <p id="money-minus" className="money minus">
-          -${expense}
+          -${Math.abs(expense)}
         </p>
       </div>
     </div>
